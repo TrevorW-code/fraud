@@ -5,7 +5,6 @@ T = TypeVar('T')
 
 class Template(Generic[T]):
     def __init__(self, structure: T):
-        """Initialize with a structure, which is the template."""
         self.structure = structure
 
     def __repr__(self) -> str:
@@ -13,25 +12,36 @@ class Template(Generic[T]):
 
 class Templater:
     def __init__(self, template: Template[T]):
-        """Templater takes a Template (string-based) to apply data to."""
         self.template = template
 
     def apply(self, data: Dict[str, Any]) -> str:
-        """Apply the given data to the template, filling placeholders."""
         return self.template.structure.format(**data)
 
+##### Generator #####
+
 class IGenerator(abc.ABC):
-    def __init__(self, template, value_map):
+    def __init__(self, template, templater):
         self.template = template
-        self.value_map = value_map
+        self.templater = templater
 
     @abc.abstractmethod
-    def gen(self):
+    def make(self, samples_num: int = 1) -> str | list:
         pass
 
-if __name__ == "__main__":
-    dict_template = Template('Hello, {name}!')
-    templater = Templater(dict_template)
+class BasicGenerator(IGenerator):
+    def __init__(self, template, templater):
+        super().__init__(template, templater)
 
-    data = {'name': 'Alice'}
-    print(templater.apply(data))
+    def make_fake(self):
+        return self.templater.apply(self.template)
+    
+    def make(self, samples_num: int = 1) -> str | list:
+        if samples_num < 1:
+            raise ValueError("Cannot generate less than 1 sample")
+        elif samples_num == 1:
+            return self.make_fake()
+        else:
+            samples_to_return = []
+            for i in range(0,samples_num):
+                samples_to_return.append(self.make_fake())
+            return samples_to_return
