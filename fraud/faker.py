@@ -1,11 +1,11 @@
 from faker import Faker
 from typing import List
 from .utils import find_placeholders
-from .base import Templater
-faker = Faker()
+from .base import Templater, BasicGenerator
+default_faker_instance = Faker()
 
 class FakerTemplater(Templater):
-    def __init__(self, template, faker_instance=faker):
+    def __init__(self, template, faker_instance):
         self.faker = faker_instance
         super().__init__(template)
     
@@ -24,6 +24,14 @@ class FakerTemplater(Templater):
 
         return super().apply(faker_data)
 
-def placeholder_to_faker_func(placeholder: str, faker_instance=faker):
+def placeholder_to_faker_func(placeholder: str, faker_instance):
     faker_func = getattr(faker_instance, placeholder)
     return faker_func
+
+class FakerGenerator(BasicGenerator):
+    def __init__(self, template, faker_instance=default_faker_instance):
+        self.template = template
+        self.templater = FakerTemplater(self.template,faker_instance)
+
+    def make_fake(self):
+        return self.templater.apply()
