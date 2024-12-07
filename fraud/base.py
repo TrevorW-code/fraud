@@ -32,8 +32,9 @@ class BasicGenerator(IGenerator):
     def __init__(self, template, templater):
         super().__init__(template, templater)
 
+    @abc.abstractmethod
     def make_fake(self):
-        return self.templater.apply(self.template)
+        pass
     
     def make(self, samples_num: int = 1) -> str | list:
         if samples_num < 1:
