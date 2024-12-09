@@ -1,5 +1,5 @@
 import pytest
-from fraud.utils import find_placeholders
+from fraud.core.utils import find_placeholders
 
 def test_find_placeholders_str():
     sample = 'this is a test {placeholder}'

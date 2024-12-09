@@ -1,8 +1,8 @@
 import pytest
 import faker
 from unittest.mock import MagicMock
-from fraud.faker import FakerTemplater, FakerGenerator, placeholder_to_faker_func
-from fraud.base import Template
+from fraud.plugins.faker import FakerTemplater, FakerGenerator, placeholder_to_faker_func
+from fraud.core.base import Template
 
 def test_placeholder_to_faker_func():
     """

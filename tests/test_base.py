@@ -1,5 +1,5 @@
 import pytest
-from fraud.base import Template, Templater
+from fraud.core.base import Template, Templater
 
 def test_basic_template():
     temp = Template('hello, {name}')

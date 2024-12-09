@@ -1,7 +1,6 @@
 from faker import Faker
-from typing import List
-from .utils import find_placeholders
-from .base import Templater, BasicGenerator
+from fraud.core.utils import find_placeholders
+from fraud.core.base import Templater, BasicGenerator
 default_faker_instance = Faker()
 
 class FakerTemplater(Templater):
