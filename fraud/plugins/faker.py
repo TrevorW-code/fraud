@@ -1,6 +1,7 @@
 from faker import Faker
 from fraud.core.utils import find_placeholders
-from fraud.core.base import Templater, BasicGenerator
+from fraud.utils._decorators import set_module
+from fraud.core.base import Template, Templater, BasicGenerator
 default_faker_instance = Faker()
 
 class FakerTemplater(Templater):
@@ -9,12 +10,10 @@ class FakerTemplater(Templater):
         super().__init__(template)
     
     def apply(self):
-
-        # make faker data
         placeholders = find_placeholders(self.template.structure)
         faker_data = {}
         
-        try:
+        try: # this applies the same value for different instances of a placeholder, for example "{name} meet {name}" = "John meet John"
             for placeholder in placeholders:
                 faker_data[placeholder] = placeholder_to_faker_func(placeholder, self.faker)()
             
@@ -34,3 +33,9 @@ class FakerGenerator(BasicGenerator):
 
     def make_fake(self):
         return self.templater.apply()
+
+@set_module("fraud")
+def make_fake(template: str, count: int):
+    temp = Template(template)
+    gen = FakerGenerator(temp)
+    return gen.make(count)

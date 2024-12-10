@@ -3,12 +3,16 @@ from typing import Dict, Any, TypeVar, Generic
 
 T = TypeVar('T')
 
+##### Generic Template #####
+
 class Template(Generic[T]):
     def __init__(self, structure: T):
         self.structure = structure
 
     def __repr__(self) -> str:
         return f"Template({self.structure!r})"
+
+##### Generic Templater #####
 
 class Templater:
     def __init__(self, template: Template[T]):
