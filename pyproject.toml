@@ -5,10 +5,20 @@ description = "Add your description here"
 readme = "README.md"
 requires-python = ">=3.12"
 dependencies = [
-    "faker>=33.1.0",
-    "pytest>=8.3.4",
+    "faker==33.1.0",
+    "pytest==8.3.4",
 ]
-
+classifiers = [
+    "Programming Language :: Python :: 3",
+    "License :: OSI Approved :: MIT License",
+    "Operating System :: OS Independent",
+]
+[project.urls]
+"Homepage" = "https://github.com/yourusername/your-package"
+[project.optional-dependencies]
+gliner = [
+    "gliner==0.2.13",
+]
 [tool.pytest.ini_options]
 testpaths = 'tests'
 xfail_strict = true
