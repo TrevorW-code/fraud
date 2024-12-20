@@ -20,5 +20,5 @@ Here's a basic example to get you started.
 ```python
 import fraud as fr
 
-synthetic_samples = fr.make_fake('Could you please meet {name} at {time}', 20)
+synthetic_samples = fr.from_template('Could you please meet {name} at {time}', 20)
 ```

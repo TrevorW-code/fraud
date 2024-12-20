@@ -61,6 +61,6 @@ def test_FakerGenerator_invalid_placeholder():
     with pytest.raises(ValueError) as e_info:
         faker_generator.make(5) # make five
 
-def test_make_fake_module_level():
+def test_from_template_module_level():
     import fraud as fr
-    print(fr.make_fake("Hi! Please meet my friend {name}.",10))
+    print(fr.from_template("Hi! Please meet my friend {name}.",10))

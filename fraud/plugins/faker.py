@@ -35,7 +35,7 @@ class FakerGenerator(BasicGenerator):
         return self.templater.apply()
 
 @set_module("fraud")
-def make_fake(template: str, count: int):
+def from_template(template: str, count: int):
     temp = Template(template)
     gen = FakerGenerator(temp)
     return gen.make(count)
