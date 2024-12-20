@@ -6,6 +6,7 @@ T = TypeVar('T')
 ##### Generic Template #####
 
 class Template(Generic[T]):
+
     def __init__(self, structure: T):
         self.structure = structure
 
