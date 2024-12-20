@@ -52,6 +52,9 @@ def test_FakerGenerator():
     assert out_one == 'Hey random_name, are you free for a call at random_time?'
     assert out_two == ['Hey random_name, are you free for a call at random_time?'] * 5
 
+# def test_get_faker_value():
+#     get_faker_value("name",mock_faker)
+
 def test_FakerGenerator_invalid_placeholder():
     real_faker = faker.Faker()
 
@@ -60,7 +63,3 @@ def test_FakerGenerator_invalid_placeholder():
 
     with pytest.raises(ValueError) as e_info:
         faker_generator.make(5) # make five
-
-def test_make_fake_module_level():
-    import fraud as fr
-    print(fr.make_fake("Hi! Please meet my friend {name}.",10))
