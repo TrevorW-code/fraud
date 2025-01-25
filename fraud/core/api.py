@@ -6,7 +6,7 @@ from fraud.core.base import Template, Templater, BasicGenerator
 from fraud.plugins.faker import default_faker_instance, get_faker_value
 
 @set_module("fraud")
-def from_template(template_str: str, count: int, extra_methods: List[Callable]=None):
+def from_str(template_str: str, count: int, extra_methods: List[Callable]=None):
     # make template & methods
     output = []
     get_default_faker_val = functools.partial(get_faker_value, faker_instance=default_faker_instance)
@@ -24,3 +24,4 @@ def from_template(template_str: str, count: int, extra_methods: List[Callable]=N
         output.append(synthesized_sample)
 
     return output
+
