@@ -10,7 +10,7 @@ def predict_template(
     sample: str,
     labels: list[str],
     model: gliner.model.GLiNER = DEFAULT_MODEL,
-    threshold: float = 0.1
+    threshold: float = 0.5
 ) -> str:
 
     predicted_entities = model.predict_entities(sample, labels, threshold)

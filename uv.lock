@@ -103,22 +103,18 @@ wheels = [
 
 [[package]]
 name = "fraud"
-version = "0.1.0"
+version = "0.1.1"
 source = { virtual = "." }
 dependencies = [
     { name = "faker" },
-    { name = "pytest" },
-]
-
-[package.optional-dependencies]
-gliner = [
     { name = "gliner" },
+    { name = "pytest" },
 ]
 
 [package.metadata]
 requires-dist = [
     { name = "faker", specifier = "==33.1.0" },
-    { name = "gliner", marker = "extra == 'gliner'", specifier = "==0.2.13" },
+    { name = "gliner", specifier = "==0.2.13" },
     { name = "pytest", specifier = "==8.3.4" },
 ]
 

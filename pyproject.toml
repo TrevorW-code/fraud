@@ -1,12 +1,13 @@
 [project]
 name = "fraud"
-version = "0.1.0"
+version = "0.1.1"
 description = "Add your description here"
 readme = "README.md"
 requires-python = ">=3.12"
 dependencies = [
     "faker==33.1.0",
     "pytest==8.3.4",
+    "gliner==0.2.13"
 ]
 classifiers = [
     "Programming Language :: Python :: 3",
@@ -14,11 +15,7 @@ classifiers = [
     "Operating System :: OS Independent",
 ]
 [project.urls]
-"Homepage" = "https://github.com/yourusername/your-package"
-[project.optional-dependencies]
-gliner = [
-    "gliner==0.2.13",
-]
+"Homepage" = "https://github.com/TrevorW-code/fraud"
 [tool.pytest.ini_options]
 testpaths = 'tests'
 xfail_strict = true
